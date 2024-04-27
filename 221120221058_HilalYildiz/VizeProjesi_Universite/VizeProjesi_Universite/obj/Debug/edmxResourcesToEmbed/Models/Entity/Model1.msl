@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VizeProjesi_UniversiteModelStoreContainer" CdmEntityContainer="VizeProjesi_UniversiteEntities7">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Admin">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.Tbl_Admin">
+        <MappingFragment StoreEntitySet="Tbl_Admin">
+          <ScalarProperty Name="Adminid" ColumnName="Adminid" />
+          <ScalarProperty Name="AdminKullaniciAdi" ColumnName="AdminKullaniciAdi" />
+          <ScalarProperty Name="AdminParola" ColumnName="AdminParola" />
+          <ScalarProperty Name="AdminRol" ColumnName="AdminRol" />
+          <ScalarProperty Name="AdminIPersonelid" ColumnName="AdminIPersonelid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_APersonel">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.Tbl_APersonel">
+        <MappingFragment StoreEntitySet="Tbl_APersonel">
+          <ScalarProperty Name="APersonelid" ColumnName="APersonelid" />
+          <ScalarProperty Name="APersonelAdSoyad" ColumnName="APersonelAdSoyad" />
+          <ScalarProperty Name="APersonelBaslamaT" ColumnName="APersonelBaslamaT" />
+          <ScalarProperty Name="APersonelAyrilmaT" ColumnName="APersonelAyrilmaT" />
+          <ScalarProperty Name="APersonelBolumid" ColumnName="APersonelBolumid" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_IPersonel">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.Tbl_IPersonel">
+        <MappingFragment StoreEntitySet="Tbl_IPersonel">
+          <ScalarProperty Name="IPersonelid" ColumnName="IPersonelid" />
+          <ScalarProperty Name="IPersonelAdSoyad" ColumnName="IPersonelAdSoyad" />
+          <ScalarProperty Name="IPersonelBaslamaT" ColumnName="IPersonelBaslamaT" />
+          <ScalarProperty Name="IPersonelAyrilmaT" ColumnName="IPersonelAyrilmaT" />
+          <ScalarProperty Name="IPersonelBirimi" ColumnName="IPersonelBirimi" />
+          <ScalarProperty Name="IPersonelDahiliNumara" ColumnName="IPersonelDahiliNumara" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Ogrenci">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.Tbl_Ogrenci">
+        <MappingFragment StoreEntitySet="Tbl_Ogrenci">
+          <ScalarProperty Name="Ogrenciid" ColumnName="Ogrenciid" />
+          <ScalarProperty Name="OgrenciAdSoyad" ColumnName="OgrenciAdSoyad" />
+          <ScalarProperty Name="OgrenciNumara" ColumnName="OgrenciNumara" />
+          <ScalarProperty Name="OgrenciBolumid" ColumnName="OgrenciBolumid" />
+          <ScalarProperty Name="OgrenciNot" ColumnName="OgrenciNot" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Rapor">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.Tbl_Rapor">
+        <MappingFragment StoreEntitySet="Tbl_Rapor">
+          <ScalarProperty Name="Raporid" ColumnName="Raporid" />
+          <ScalarProperty Name="RaporOgrenciid" ColumnName="RaporOgrenciid" />
+          <ScalarProperty Name="RaporAPersonelid" ColumnName="RaporAPersonelid" />
+          <ScalarProperty Name="RaporIPersonelid" ColumnName="RaporIPersonelid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblBolum">
+      <EntityTypeMapping TypeName="VizeProjesi_UniversiteModel.TblBolum">
+        <MappingFragment StoreEntitySet="TblBolum">
+          <ScalarProperty Name="Bolumid" ColumnName="Bolumid" />
+          <ScalarProperty Name="BolumAdi" ColumnName="BolumAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

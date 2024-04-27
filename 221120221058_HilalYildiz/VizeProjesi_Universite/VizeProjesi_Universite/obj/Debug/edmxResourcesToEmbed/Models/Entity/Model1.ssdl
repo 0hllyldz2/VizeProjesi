@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VizeProjesi_UniversiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Admin">
+    <Key>
+      <PropertyRef Name="Adminid" />
+    </Key>
+    <Property Name="Adminid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminKullaniciAdi" Type="varchar" MaxLength="50" />
+    <Property Name="AdminParola" Type="varchar" MaxLength="50" />
+    <Property Name="AdminRol" Type="varchar" MaxLength="50" />
+    <Property Name="AdminIPersonelid" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_APersonel">
+    <Key>
+      <PropertyRef Name="APersonelid" />
+    </Key>
+    <Property Name="APersonelid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APersonelAdSoyad" Type="varchar" MaxLength="80" />
+    <Property Name="APersonelBaslamaT" Type="smalldatetime" />
+    <Property Name="APersonelAyrilmaT" Type="smalldatetime" />
+    <Property Name="APersonelBolumid" Type="int" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_IPersonel">
+    <Key>
+      <PropertyRef Name="IPersonelid" />
+    </Key>
+    <Property Name="IPersonelid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IPersonelAdSoyad" Type="varchar" MaxLength="80" />
+    <Property Name="IPersonelBaslamaT" Type="smalldatetime" />
+    <Property Name="IPersonelAyrilmaT" Type="smalldatetime" />
+    <Property Name="IPersonelBirimi" Type="varchar" MaxLength="80" />
+    <Property Name="IPersonelDahiliNumara" Type="int" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_Ogrenci">
+    <Key>
+      <PropertyRef Name="Ogrenciid" />
+    </Key>
+    <Property Name="Ogrenciid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OgrenciAdSoyad" Type="varchar" MaxLength="80" />
+    <Property Name="OgrenciNumara" Type="bigint" />
+    <Property Name="OgrenciBolumid" Type="int" />
+    <Property Name="OgrenciNot" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_Rapor">
+    <Key>
+      <PropertyRef Name="Raporid" />
+    </Key>
+    <Property Name="Raporid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaporOgrenciid" Type="int" />
+    <Property Name="RaporAPersonelid" Type="int" />
+    <Property Name="RaporIPersonelid" Type="int" />
+  </EntityType>
+  <EntityType Name="TblBolum">
+    <Key>
+      <PropertyRef Name="Bolumid" />
+    </Key>
+    <Property Name="Bolumid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BolumAdi" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Tbl_Admin_Tbl_IPersonel">
+    <End Role="Tbl_IPersonel" Type="Self.Tbl_IPersonel" Multiplicity="0..1" />
+    <End Role="Tbl_Admin" Type="Self.Tbl_Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_IPersonel">
+        <PropertyRef Name="IPersonelid" />
+      </Principal>
+      <Dependent Role="Tbl_Admin">
+        <PropertyRef Name="AdminIPersonelid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_APersonel_TblBolum">
+    <End Role="TblBolum" Type="Self.TblBolum" Multiplicity="0..1" />
+    <End Role="Tbl_APersonel" Type="Self.Tbl_APersonel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBolum">
+        <PropertyRef Name="Bolumid" />
+      </Principal>
+      <Dependent Role="Tbl_APersonel">
+        <PropertyRef Name="APersonelBolumid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Ogrenci_TblBolum">
+    <End Role="TblBolum" Type="Self.TblBolum" Multiplicity="0..1" />
+    <End Role="Tbl_Ogrenci" Type="Self.Tbl_Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBolum">
+        <PropertyRef Name="Bolumid" />
+      </Principal>
+      <Dependent Role="Tbl_Ogrenci">
+        <PropertyRef Name="OgrenciBolumid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Rapor_Tbl_APersonel1">
+    <End Role="Tbl_APersonel" Type="Self.Tbl_APersonel" Multiplicity="0..1" />
+    <End Role="Tbl_Rapor" Type="Self.Tbl_Rapor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_APersonel">
+        <PropertyRef Name="APersonelid" />
+      </Principal>
+      <Dependent Role="Tbl_Rapor">
+        <PropertyRef Name="RaporAPersonelid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Rapor_Tbl_IPersonel1">
+    <End Role="Tbl_IPersonel" Type="Self.Tbl_IPersonel" Multiplicity="0..1" />
+    <End Role="Tbl_Rapor" Type="Self.Tbl_Rapor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_IPersonel">
+        <PropertyRef Name="IPersonelid" />
+      </Principal>
+      <Dependent Role="Tbl_Rapor">
+        <PropertyRef Name="RaporIPersonelid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Rapor_Tbl_Ogrenci1">
+    <End Role="Tbl_Ogrenci" Type="Self.Tbl_Ogrenci" Multiplicity="0..1" />
+    <End Role="Tbl_Rapor" Type="Self.Tbl_Rapor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Ogrenci">
+        <PropertyRef Name="Ogrenciid" />
+      </Principal>
+      <Dependent Role="Tbl_Rapor">
+        <PropertyRef Name="RaporOgrenciid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VizeProjesi_UniversiteModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_APersonel" EntityType="Self.Tbl_APersonel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_IPersonel" EntityType="Self.Tbl_IPersonel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Ogrenci" EntityType="Self.Tbl_Ogrenci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Rapor" EntityType="Self.Tbl_Rapor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblBolum" EntityType="Self.TblBolum" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tbl_Admin_Tbl_IPersonel" Association="Self.FK_Tbl_Admin_Tbl_IPersonel">
+      <End Role="Tbl_IPersonel" EntitySet="Tbl_IPersonel" />
+      <End Role="Tbl_Admin" EntitySet="Tbl_Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_APersonel_TblBolum" Association="Self.FK_Tbl_APersonel_TblBolum">
+      <End Role="TblBolum" EntitySet="TblBolum" />
+      <End Role="Tbl_APersonel" EntitySet="Tbl_APersonel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Ogrenci_TblBolum" Association="Self.FK_Tbl_Ogrenci_TblBolum">
+      <End Role="TblBolum" EntitySet="TblBolum" />
+      <End Role="Tbl_Ogrenci" EntitySet="Tbl_Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Rapor_Tbl_APersonel1" Association="Self.FK_Tbl_Rapor_Tbl_APersonel1">
+      <End Role="Tbl_APersonel" EntitySet="Tbl_APersonel" />
+      <End Role="Tbl_Rapor" EntitySet="Tbl_Rapor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Rapor_Tbl_IPersonel1" Association="Self.FK_Tbl_Rapor_Tbl_IPersonel1">
+      <End Role="Tbl_IPersonel" EntitySet="Tbl_IPersonel" />
+      <End Role="Tbl_Rapor" EntitySet="Tbl_Rapor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Rapor_Tbl_Ogrenci1" Association="Self.FK_Tbl_Rapor_Tbl_Ogrenci1">
+      <End Role="Tbl_Ogrenci" EntitySet="Tbl_Ogrenci" />
+      <End Role="Tbl_Rapor" EntitySet="Tbl_Rapor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
