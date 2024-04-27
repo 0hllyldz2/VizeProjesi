@@ -1,0 +1,32 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_APersonel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONELİN ADI SOYADI</th>
+        <th>PERSONELİN BAŞLAMA TARİHİ</th>
+        <th>PERSONELİN BÖLÜMÜ</th>
+        <th>PERSONELİN PASİFLİK DURUMU</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var prs in Model.Where(o => o.Durum == false))
+        {
+            <tr>
+                <td>@prs.APersonelAdSoyad</td>
+                <td>@prs.APersonelBaslamaT</td>
+                <td>@prs.TblBolum.BolumAdi</td>
+                <td><a href="/AdminAPersonel/PasifEt/@prs.APersonelid" class="btn btn-info">PASİF ET</a></td>
+                <td><a href="/AdminAPersonel/Sil/@prs.APersonelid" class="btn btn-danger">SİL</a></td>
+                <td><a href="/AdminAPersonel/APersonelGetir/@prs.APersonelid" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/AdminAPersonel/YeniAPersonel/" class="btn btn-primary">YENİ AKADEMİK PERSONEL EKLE</a>

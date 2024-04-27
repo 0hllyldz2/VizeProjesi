@@ -1,0 +1,33 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_IPersonel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONELİN ADI SOYADI</th>
+        <th>PERSONELİN BAŞLAMA TARİHİ</th>
+        <th>PERSONELİN BİRİMİ</th>
+        <th>PERSONELİN DAHİLİ NUMRASI</th>
+        <th>PERSONELİN PASİFLİK DURUMU</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var prsl in Model.Where(o => o.Durum == false))
+        {
+            <tr>
+                <td>@prsl.IPersonelAdSoyad</td>
+                <td>@prsl.IPersonelBaslamaT</td>
+                <td>@prsl.IPersonelBirimi</td>
+                <td>@prsl.IPersonelDahiliNumara</td>
+                <td><a href="/AdminIPersonel/PasifEt/@prsl.IPersonelid" class="btn btn-info">PASİF ET</a></td>
+                <td><a href="/AdminIPersonel/Sil/@prsl.IPersonelid" class="btn btn-danger">SİL</a></td>
+                <td><a href="/AdminIPersonel/IPersonelGetir/@prsl.IPersonelid" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/AdminIPersonel/YeniIPersonel/" class="btn btn-primary">YENİ İDARİ PERSONEL EKLE</a>

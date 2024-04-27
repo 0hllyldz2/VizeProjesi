@@ -1,0 +1,32 @@
+﻿@model VizeProjesi_Universite.Models.Entity.Tbl_Ogrenci
+
+@{
+    ViewBag.Title = "OgrenciGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Ogrenci", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Öğrenci ID</label>
+        @Html.TextBoxFor(m => m.Ogrenciid, new { @class = "form-control" })
+        <br />
+        <label>Öğrenci Adı Soyadı</label>
+        @Html.TextBoxFor(m => m.OgrenciAdSoyad, new { @class = "form-control" })
+        <br />
+        <label>Öğrenci Numarası</label>
+        @Html.TextBoxFor(m => m.OgrenciNumara, new { @class = "form-control" })
+        <br />
+        <label>Öğrencinin Bölümü</label>
+        @Html.TextBoxFor(m => m.TblBolum.BolumAdi, new { @class = "form-control" })
+        <br />
+        <label>Öğrencinin Notu</label>
+        @Html.TextBoxFor(m => m.OgrenciNot, new { @class = "form-control" })
+        <br />
+        <label>Öğrencinin Durumu</label>
+        @Html.TextBoxFor(m => m.Durum, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Öğrenci Güncelle</button>
+    </div>
+}

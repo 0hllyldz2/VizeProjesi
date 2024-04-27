@@ -1,0 +1,36 @@
+﻿@model VizeProjesi_Universite.Models.Entity.Tbl_APersonel
+
+@{
+    ViewBag.Title = "YeniIPersonel";
+    Layout = "~/Views/Shared/_AdminLaoyut.cshtml";
+}
+
+<form class="from-group" method="post">
+    <div>
+        <label>Personelin Adı Soyadı</label>
+        <input type="text" class="form-control" name="IPersonelAdSoyad" />
+    </div>
+    <div>
+        <label>Personelin Başlama Tarihi</label>
+        <input type="text" class="form-control" name="IPersonelBaslamaT" />
+    </div>
+    <div>
+        <label>Personelin Ayrılma Tarihi</label>
+        <input type="text" class="form-control" name="IPersonelAyrilmaT" />
+    </div>
+    <div>
+        <label>Personelin Birimi</label>
+        <input type="text" class="form-control" name="IPersonelBirimi" />
+    </div>
+    <div>
+        <label>Personelin Dahili Numarası</label>
+        <input type="text" class="form-control" name="IPersonelDahiliNumara" />
+    </div>
+    <div>
+        <label>Personelin Durumu</label>
+        <input type="text" class="form-control" name="Durum" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Personel Ekle</button>
+    </div>
+</form>

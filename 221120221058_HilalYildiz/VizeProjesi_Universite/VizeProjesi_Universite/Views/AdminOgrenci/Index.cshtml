@@ -1,0 +1,34 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_Ogrenci>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ÖĞRENCİ ADI SOYADI</th>
+        <th>ÖĞRENCİ NUMARASI</th>
+        <th>ÖĞRENCİ BÖLÜMÜ</th>
+        <th>ÖĞRENCİ NOTU</th>
+        <th>MEZUNLUK DURUMU</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var ogr in Model.Where(o => o.Durum == false))
+        {
+            <tr>
+                <td>@ogr.OgrenciAdSoyad</td>
+                <td>@ogr.OgrenciNumara</td>
+                <td>@ogr.TblBolum.BolumAdi</td>
+                <td>@ogr.OgrenciNot</td>
+                <td><a href="/AdminOgrenci/MezunEt/@ogr.Ogrenciid" class="btn btn-info">MEZUN ET</a></td>
+                <td><a href="/AdminOgrenci/Sil/@ogr.Ogrenciid" class="btn btn-danger">SİL</a></td>
+                <td><a href="/AdminOgrenci/OgrenciGetir/@ogr.Ogrenciid" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/AdminOgrenci/YeniOgrenci/" class="btn btn-primary">YENİ ÖĞRENCİ EKLE</a>

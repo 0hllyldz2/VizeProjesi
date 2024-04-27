@@ -1,0 +1,71 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_Rapor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>MEZUN ÖĞRENCİLER</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>MEZUN ÖĞRENCİNİN ADI SOYADI</th>
+        <th>MEZUN ÖĞRENCİNİN NUMARASI</th>
+        <th>MEZUN ÖĞRENCİNİN BÖLÜMÜ</th>
+        <th>MEZUN ÖĞRENCİNİN NOTU</th>
+    </tr>
+    <tbody>
+        @foreach (var ogr in Model)
+        {
+            <tr>
+                <td>@(ogr.Tbl_Ogrenci != null ? ogr.Tbl_Ogrenci.OgrenciAdSoyad : "")</td>
+                <td>@(ogr.Tbl_Ogrenci != null ? ogr.Tbl_Ogrenci.OgrenciNumara.ToString() : "")</td>
+                <td>@(ogr.Tbl_Ogrenci != null && ogr.Tbl_Ogrenci.TblBolum != null ? ogr.Tbl_Ogrenci.TblBolum.BolumAdi : "")</td>
+                <td>@(ogr.Tbl_Ogrenci != null ? ogr.Tbl_Ogrenci.OgrenciNot.ToString() : "")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<h1>ESKİ AKADEMİK PERSONELLER</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONELİN ADI SOYADI</th>
+        <th>PERSONELİN BAŞLAMA TARİHİ</th>
+        <th>PERSONELİN AYRILMA TARİHİ</th>
+        <th>PERSONELİN BÖLÜMÜ</th>
+    </tr>
+    <tbody>
+        @foreach (var prs in Model)
+        {
+            <tr>
+                <td>@(prs.Tbl_APersonel != null ? prs.Tbl_APersonel.APersonelAdSoyad : "")</td>
+                <td>@(prs.Tbl_APersonel != null ? prs.Tbl_APersonel.APersonelBaslamaT.ToString() : "")</td>
+                <td>@(prs.Tbl_APersonel != null ? (prs.Tbl_APersonel.APersonelAyrilmaT.HasValue ? prs.Tbl_APersonel.APersonelAyrilmaT.Value.ToString() : "") : "")</td>
+                <td>@(prs.Tbl_APersonel != null && prs.Tbl_APersonel.TblBolum != null ? prs.Tbl_APersonel.TblBolum.BolumAdi : "")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>ESKİ İDARİ PERSONELLER</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONELİN ADI SOYADI</th>
+        <th>PERSONELİN BAŞLAMA TARİHİ</th>
+        <th>PERSONELİN AYRILMA TARİHİ</th>
+        <th>PERSONELİN BİRİMİ</th>
+    </tr>
+    <tbody>
+        @foreach (var prsl in Model)
+        {
+            <tr>
+                <td>@(prsl.Tbl_IPersonel != null ? prsl.Tbl_IPersonel.IPersonelAdSoyad : "")</td>
+                <td>@(prsl.Tbl_IPersonel != null ? (prsl.Tbl_IPersonel.IPersonelBaslamaT != null ? prsl.Tbl_IPersonel.IPersonelBaslamaT.ToString() : "") : "")</td>
+                <td>@(prsl.Tbl_IPersonel != null ? (prsl.Tbl_IPersonel.IPersonelAyrilmaT != null ? prsl.Tbl_IPersonel.IPersonelAyrilmaT.ToString() : "") : "")</td>
+                <td>@(prsl.Tbl_IPersonel != null ? prsl.Tbl_IPersonel.IPersonelBirimi : "")</td>
+            </tr>
+        }
+    </tbody>
+</table>

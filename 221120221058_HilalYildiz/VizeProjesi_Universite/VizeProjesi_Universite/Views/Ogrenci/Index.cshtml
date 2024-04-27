@@ -1,0 +1,28 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_Ogrenci>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ÖĞRENCİ ADI SOYADI</th>
+        <th>ÖĞRENCİ NUMARASI</th>
+        <th>ÖĞRENCİ BÖLÜMÜ</th>
+        <th>ÖĞRENCİ NOTU</th>
+    </tr>
+    <tbody>
+        @foreach (var ogr in Model.Where(o => o.Durum == false))
+        {
+            <tr>
+                <td>@ogr.OgrenciAdSoyad</td>
+                <td>@ogr.OgrenciNumara</td>
+                <td>@ogr.TblBolum.BolumAdi</td>
+                <td>@ogr.OgrenciNot</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

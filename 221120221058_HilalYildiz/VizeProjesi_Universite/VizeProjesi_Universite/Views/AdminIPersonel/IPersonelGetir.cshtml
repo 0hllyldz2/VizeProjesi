@@ -1,0 +1,35 @@
+﻿@model VizeProjesi_Universite.Models.Entity.Tbl_IPersonel
+
+@{
+    ViewBag.Title = "IPersonelGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm("Guncelle", "APersnel", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Personel ID</label>
+        @Html.TextBoxFor(m => m.IPersonelid, new { @class = "form-control" })
+        <br />
+        <label>Öğrenci Adı Soyadı</label>
+        @Html.TextBoxFor(m => m.IPersonelAdSoyad, new { @class = "form-control" })
+        <br />
+        <label>Personelin Başlama Tarihi</label>
+        @Html.TextBoxFor(m => m.IPersonelBaslamaT, new { @class = "form-control" })
+        <br />
+        <label>Personelin Ayrılma Tarihi</label>
+        @Html.TextBoxFor(m => m.IPersonelAyrilmaT, new { @class = "form-control" })
+        <br />
+        <label>Personelin Birimi</label>
+        @Html.TextBoxFor(m => m.IPersonelBirimi, new { @class = "form-control" })
+        <br />
+        <label>Personelin Dahili Numarası</label>
+        @Html.TextBoxFor(m => m.IPersonelDahiliNumara, new { @class = "form-control" })
+        <br />
+        <label>Personelin Durumu</label>
+        @Html.TextBoxFor(m => m.Durum, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Personel Güncelle</button>
+    </div>
+}
+

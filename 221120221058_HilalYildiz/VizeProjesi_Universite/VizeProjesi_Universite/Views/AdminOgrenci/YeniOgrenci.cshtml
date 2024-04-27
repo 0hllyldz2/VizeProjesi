@@ -1,0 +1,33 @@
+﻿@model VizeProjesi_Universite.Models.Entity.Tbl_Ogrenci
+
+@{
+    ViewBag.Title = "YeniOgrenci";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="from-group" method="post">
+    <div>
+        <label>Öğrenci Adı Soyadı</label>
+        <input type="text" class="form-control" name="OgrenciAdSoyad" />
+    </div>
+    <div>
+        <label>Öğrenci Numarası</label>
+        <input type="text" class="form-control" name="OgrenciNumara" />
+    </div>
+    <div>
+        <label>Öğrencinin Bölümünü Seçiniz</label>
+        @Html.DropDownListFor(m => m.TblBolum.Bolumid, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Öğrencinin Notu</label>
+        <input type="text" class="form-control" name="OgrenciNot" />
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="Durum" value="0">Öğrencinin Durumu
+        </label>
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Öğrenci Ekle</button>
+    </div>
+</form>

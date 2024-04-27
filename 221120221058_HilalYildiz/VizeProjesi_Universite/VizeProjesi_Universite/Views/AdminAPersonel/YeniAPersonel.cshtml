@@ -1,0 +1,31 @@
+﻿@model VizeProjesi_Universite.Models.Entity.Tbl_APersonel
+@{
+    ViewBag.Title = "YeniAPersonel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="from-group" method="post">
+    <div>
+        <label>Personelin Adı Soyadı</label>
+        <input type="text" class="form-control" name="APersonelAdSoyad" />
+    </div>
+    <div>
+        <label>Personelin Başlama Tarihi</label>
+        <input type="text" class="form-control" name="APersonelBaslamaT" />
+    </div>
+    <div>
+        <label>Personelin Ayrılma Tarihi</label>
+        <input type="text" class="form-control" name="APersonelAyrilmaT" />
+    </div>
+    <div>
+        <label>Personelin Bölümünü Seçiniz</label>
+        @Html.DropDownListFor(m => m.TblBolum.Bolumid, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Personelin Durumu</label>
+        <input type="text" class="form-control" name="Durum" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Personel Ekle</button>
+    </div>
+</form>

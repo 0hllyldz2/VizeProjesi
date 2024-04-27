@@ -1,0 +1,27 @@
+﻿@using VizeProjesi_Universite.Models.Entity
+@model List<Tbl_IPersonel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONELİN ADI SOYADI</th>
+        <th>PERSONELİN BAŞLAMA TARİHİ</th>
+        <th>PERSONELİN BİRİMİ</th>
+        <th>PERSONELİN DAHİLİ NUMRASI</th>
+    </tr>
+    <tbody>
+        @foreach (var prsl in Model.Where(o => o.Durum == false))
+        {
+            <tr>
+                <td>@prsl.IPersonelAdSoyad</td>
+                <td>@prsl.IPersonelBaslamaT</td>
+                <td>@prsl.IPersonelBirimi</td>
+                <td>@prsl.IPersonelDahiliNumara</td>
+            </tr>
+        }
+    </tbody>
+</table>
